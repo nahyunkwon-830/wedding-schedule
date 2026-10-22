@@ -46,10 +46,10 @@ h1{margin:0;font-size:28px;line-height:1.3;font-weight:800;letter-spacing:-.02em
 .row.first::before{top:26px}
 .row.last::before{bottom:auto;height:26px}
 .row.first.last::before{display:none}
-.time b{display:block;font-weight:700;font-size:15px;color:var(--blue);font-variant-numeric:tabular-nums;line-height:1.5}
-.time i{display:block;font-style:normal;font-size:12px;color:var(--fg3);font-variant-numeric:tabular-nums;line-height:1.4}
-.dot{position:relative;z-index:1;justify-self:center;margin-top:6px;width:10px;height:10px;border-radius:50%;background:var(--card);border:2px solid var(--blue)}
-.row.key .dot{width:14px;height:14px;margin-top:4px;background:var(--blue)}
+.time b{display:block;font-weight:700;font-size:15px;color:var(--fg);font-variant-numeric:tabular-nums;line-height:1.5}
+.time i{display:none}
+.dot{position:relative;z-index:1;justify-self:center;margin-top:6px;width:12px;height:12px;border-radius:50%;background:var(--card);border:2px solid var(--blue)}
+.row.key .dot{width:12px;height:12px;margin-top:6px;background:var(--card)}
 .row.key .time b{color:var(--fg)}
 .row.past{opacity:.45}
 .row.now .dot{box-shadow:0 0 0 5px var(--blue-soft);background:var(--blue)}
@@ -86,6 +86,11 @@ h1{margin:0;font-size:28px;line-height:1.3;font-weight:800;letter-spacing:-.02em
 .copy:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){.bar i{transition:none}}
 </style>
+<style>
+#p2 .row{grid-template-columns:20px 1fr}
+#p2 .time{display:none}
+#p2 .row::before{left:9px}
+</style>
 
 <div class="wrap">
   <header>
@@ -96,58 +101,73 @@ h1{margin:0;font-size:28px;line-height:1.3;font-weight:800;letter-spacing:-.02em
   <section class="summary" aria-label="요약">
     <div><span>신부 메이크업</span><b>11:30</b></div>
     <div><span>혼주 메이크업</span><b>12:30</b></div>
-    <div><span>예식 시작</span><b>15:30</b></div>
+    <div><span>예식 시작</span><b>3:30</b></div>
   </section>
 
   <div style="margin:0 0 14px;padding:14px 16px;background:#fafbfc;border:1px solid #eef0f3;border-radius:20px;font-size:13px;color:#374151;line-height:1.6">
     <b style="display:block;margin-bottom:4px;color:#4b5563">당일 준비 안내</b>
     <b>얼굴</b> : 스킨 · 로션 · 수분크림 바르고 오기<br>
-    <b>헤어</b> : 샴푸 · 린스 후 바짝 말리고 오기
+    <b>헤어</b> : 샴푸 · 린스 후 바짝 말리고 오기<br>
+    <b>식사</b> : 점심때부터 준비가 시작되니 꼭 식사하고 와주세요
   </div>
 
   <nav class="tabs" role="tablist" aria-label="스케줄 구분">
-    <button class="tab" role="tab" id="t0" aria-selected="true" aria-controls="p0">식전 스케줄</button>
+    <button class="tab" role="tab" id="t0" aria-selected="true" aria-controls="p0">신랑신부 스케줄</button>
     <button class="tab" role="tab" id="t1" aria-selected="false" aria-controls="p1">혼주 스케줄</button>
     <button class="tab" role="tab" id="t2" aria-selected="false" aria-controls="p2">예식 순서</button>
+    <button class="tab" role="tab" id="t3" aria-selected="false" aria-controls="p3">기타</button>
   </nav>
 
   <section class="panel" id="p0" role="tabpanel" aria-labelledby="t0">
-    <h2>식전 스케줄</h2>
+    <h2>신랑신부 스케줄</h2>
     <p class="tip"><b>메이크업 장소 = 타니베이호텔 별관</b> (본관 맞은편)</p>
-    <div class="row first key" data-s="11:30" data-e="13:30"><div class="time"><b>11:30</b><i>~13:30</i></div><div class="dot"></div><div class="what"><strong>신랑·신부 헤어·메이크업<span class="badge">별관 · 2시간</span></strong></div></div>
-    <div class="row key" data-s="12:30" data-e="14:00"><div class="time"><b>12:30</b><i>~14:00</i></div><div class="dot"></div><div class="what"><strong>혼주·친지 헤어·메이크업 (양가)<span class="badge">별관 · 1시간 30분</span></strong><small>메이크업 후 별관에서 환복(한복·예복)하고 본관으로 이동</small></div></div>
-    <div class="row" data-s="13:30" data-e="14:10"><div class="time"><b>13:30</b><i>~14:10</i></div><div class="dot"></div><div class="what"><strong>신랑·신부 착장 (드레스·예복)</strong><small>별관에서</small></div></div>
-    <div class="row key"><div class="time"></div><div class="dot"></div><div class="what"><strong>별관 → 본관 이동</strong><small>신랑·신부 각자 이동 · 도보 5분 이내</small></div></div>
-    <div class="row"><div class="time"></div><div class="dot"></div><div class="what"><strong>신부대기실 촬영, 리허설</strong><small>예식 30분 전, 식순대로 리허설 · 신부 입장·동선, 식전영상·축가 음원 세팅 확인</small><span class="who">사회자, 축가담당자</span></div></div>
-    <div class="row key last" data-s="15:30" data-e="16:10"><div class="time"><b>15:30</b><i></i></div><div class="dot"></div><div class="what"><strong>예식 시작<span class="badge">해루홀</span></strong><small>타니베이 호텔 해루홀</small></div></div>
+    <div class="row first key" data-s="11:30" data-e="13:30"><div class="time"><b>11:30</b><i>~1:30</i></div><div class="dot"></div><div class="what"><strong>신랑·신부 헤어·메이크업<span class="badge">별관 · 2시간</span></strong></div></div>
+    <div class="row key" data-s="12:30" data-e="14:00"><div class="time"><b>12:30</b><i>~2:00</i></div><div class="dot"></div><div class="what"><strong>혼주·친지 헤어·메이크업 (양가)<span class="badge">별관 · 1시간 30분</span></strong><small>메이크업 후 별관에서 환복(한복·예복)하고 본관으로 이동</small></div></div>
+    <div class="row" data-s="13:30" data-e="14:10"><div class="time"><b>1:30</b><i>~2:10</i></div><div class="dot"></div><div class="what"><strong>신랑·신부 착장 (드레스·예복)</strong><small>별관에서</small></div></div>
+    <div class="row key" data-s="14:15" data-e="14:25"><div class="time"><b>2:15</b></div><div class="dot"></div><div class="what"><strong>별관 → 본관 이동</strong><small>차량으로 이동</small></div></div>
+    <div class="row" data-s="15:00" data-e="15:30"><div class="time"><b>3:00</b></div><div class="dot"></div><div class="what"><strong>신부대기실 촬영, 리허설</strong><small>예식 30분 전, 식순대로 리허설 · 신부 입장·동선, 식전영상·축가 음원 세팅 확인</small><span class="who">사회자, 축가담당자</span></div></div>
+    <div class="row key last" data-s="15:30" data-e="16:10"><div class="time"><b>3:30</b><i></i></div><div class="dot"></div><div class="what"><strong>예식 시작<span class="badge">해루홀</span></strong><small>타니베이 호텔 해루홀</small></div></div>
   </section>
 
   <section class="panel" id="p1" role="tabpanel" aria-labelledby="t1" hidden>
     <h2>혼주 스케줄</h2>
-    <p class="tip"><b>메이크업 장소 = 타니베이호텔 별관</b> (본관 맞은편) · 12:30 시작<br>혼주 대기실도 메이크업·한복샵이 있는 별관에 있어, 별관에서 편하게 대기하시면 됩니다.</p>
-    <div class="row first key" data-s="12:30" data-e="14:00"><div class="time"><b>12:30</b><i>~14:00</i></div><div class="dot"></div><div class="what"><strong>헤어·메이크업 (양가)<span class="badge">별관 · 1시간 30분</span></strong><small>메이크업 후 별관에서 환복(한복·예복). 아버님은 양복 입고 오시면 바로 진행</small></div></div>
+    <p class="tip"><b>메이크업 장소 = 타니베이호텔 별관</b> (본관 맞은편) · 12:30 시작<br>혼주 대기실도 메이크업·한복샵이 있는 별관에 있어, 별관에서 편하게 대기하시면 됩니다. 대기실에 락커가 있어 메이크업 후 이용할 수 있어요.</p>
+    <div class="row first key" data-s="12:30" data-e="14:00"><div class="time"><b>12:30</b><i>~2:00</i></div><div class="dot"></div><div class="what"><strong>헤어·메이크업 (양가)<span class="badge">별관 · 1시간 30분</span></strong><small>메이크업 후 별관에서 환복(한복·예복). 아버님은 양복 입고 오시면 바로 진행</small></div></div>
     <div class="row key"><div class="time"></div><div class="dot"></div><div class="what"><strong>별관 → 본관 이동</strong><small>시간 여유 시 별관 대기실에서 대기 후 이동 · 도보 5분 이내</small></div></div>
-    <div class="row key last" data-s="15:30" data-e="16:10"><div class="time"><b>15:30</b><i></i></div><div class="dot"></div><div class="what"><strong>예식 시작<span class="badge">해루홀</span></strong><small>입장·화촉 순서는 ‘예식 순서’ 탭 참고</small></div></div>
+    <div class="row key last" data-s="15:30" data-e="16:10"><div class="time"><b>3:30</b><i></i></div><div class="dot"></div><div class="what"><strong>예식 시작<span class="badge">해루홀</span></strong><small>입장·화촉 순서는 ‘예식 순서’ 탭 참고</small></div></div>
   </section>
 
   <section class="panel" id="p2" role="tabpanel" aria-labelledby="t2" hidden>
     <h2>예식 순서</h2>
     <p class="hint">진행 순서 · 예식 30분 전 이 순서대로 리허설 (시간은 당일 유동적)</p>
-    <div class="row first"><div class="time"><b>0</b></div><div class="dot"></div><div class="what"><strong>식전영상</strong></div></div>
-    <div class="row"><div class="time"><b>1</b></div><div class="dot"></div><div class="what"><strong>개식 준비, 사회자 입장</strong></div></div>
-    <div class="row"><div class="time"><b>2</b></div><div class="dot"></div><div class="what"><strong>개식사</strong><small>신랑 친구 유지완</small></div></div>
-    <div class="row"><div class="time"><b>3</b></div><div class="dot"></div><div class="what"><strong>화촉 점화</strong><small>양가 어머니</small></div></div>
-    <div class="row"><div class="time"><b>4</b></div><div class="dot"></div><div class="what"><strong>신랑 입장</strong></div></div>
-    <div class="row"><div class="time"><b>5</b></div><div class="dot"></div><div class="what"><strong>신부 입장</strong><small>아버지와 함께</small></div></div>
-    <div class="row"><div class="time"><b>6</b></div><div class="dot"></div><div class="what"><strong>신랑·신부 맞절</strong></div></div>
-    <div class="row"><div class="time"><b>7</b></div><div class="dot"></div><div class="what"><strong>혼인서약</strong><small>신랑·신부 진행</small></div></div>
-    <div class="row"><div class="time"><b>8</b></div><div class="dot"></div><div class="what"><strong>성혼선언</strong><small>신부 아버지 진행</small></div></div>
-    <div class="row"><div class="time"><b>9</b></div><div class="dot"></div><div class="what"><strong>축가</strong><small>1곡</small></div></div>
-    <div class="row"><div class="time"><b>10</b></div><div class="dot"></div><div class="what"><strong>양가 부모님 및 내빈께 인사</strong></div></div>
-    <div class="row"><div class="time"><b>11</b></div><div class="dot"></div><div class="what"><strong>신랑·신부 행진</strong></div></div>
-    <div class="row"><div class="time"><b>12</b></div><div class="dot"></div><div class="what"><strong>폐회식 및 사진 촬영</strong></div></div>
-    <div class="row last"><div class="time"><b>13</b></div><div class="dot"></div><div class="what"><strong>식사 안내</strong><small>본관 2층 뷔페 PADO (파도)</small></div></div>
+    <div class="row first"><div class="time"></div><div class="dot"></div><div class="what"><strong>식전영상</strong></div></div>
+    <div class="row"><div class="time"></div><div class="dot"></div><div class="what"><strong>개식 준비, 사회자 입장</strong></div></div>
+    <div class="row"><div class="time"></div><div class="dot"></div><div class="what"><strong>개식사</strong><small>신랑 친구 유지완</small></div></div>
+    <div class="row"><div class="time"></div><div class="dot"></div><div class="what"><strong>화촉 점화</strong><small>양가 어머니</small></div></div>
+    <div class="row"><div class="time"></div><div class="dot"></div><div class="what"><strong>신랑 입장</strong><small>입장 후 단상 앞에 도착해 하객에게 인사</small></div></div>
+    <div class="row"><div class="time"></div><div class="dot"></div><div class="what"><strong>신부 입장</strong><small>아버지와 함께 입장<br><b>신부 아버지</b> : ① 신부보다 반 걸음 앞에서 천천히 (드레스 밟지 않게) &nbsp;② 신랑과 악수·포옹 후 신부 손을 건네주기</small></div></div>
+    <div class="row"><div class="time"></div><div class="dot"></div><div class="what"><strong>신랑·신부 맞절</strong><small>속으로 1·2·3 세며 숙이고, 1·2·3 세며 천천히 일어나기</small></div></div>
+    <div class="row"><div class="time"></div><div class="dot"></div><div class="what"><strong>혼인서약</strong><small>신랑·신부 진행</small></div></div>
+    <div class="row"><div class="time"></div><div class="dot"></div><div class="what"><strong>성혼선언</strong><small>신부 아버지 진행</small></div></div>
+    <div class="row"><div class="time"></div><div class="dot"></div><div class="what"><strong>축가</strong><small>1곡</small></div></div>
+    <div class="row"><div class="time"></div><div class="dot"></div><div class="what"><strong>양가 부모님 및 내빈께 인사</strong><small>부모님께 인사 후 포옹 (3초 이상) · 하객 인사는 양가 부모님 모두 나와서 함께</small></div></div>
+    <div class="row"><div class="time"></div><div class="dot"></div><div class="what"><strong>신랑·신부 행진</strong></div></div>
+    <div class="row"><div class="time"></div><div class="dot"></div><div class="what"><strong>폐회식 및 사진 촬영</strong></div></div>
+    <div class="row last"><div class="time"></div><div class="dot"></div><div class="what"><strong>식사 안내</strong><small>본관 2층 뷔페 PADO (파도)</small></div></div>
   </section>
+
+  <section class="panel" id="p3" role="tabpanel" aria-labelledby="t3" hidden>
+    <h2>기타 안내</h2>
+    <div style="padding:12px 2px;border-bottom:1px solid #eef0f3"><b>대기실 · 탈의실</b><div style="color:#6b7280;margin-top:2px">메이크업·한복샵이 있는 별관에 있어요</div></div>
+    <div style="padding:12px 2px;border-bottom:1px solid #eef0f3"><b>혼주 주차</b><div style="color:#6b7280;margin-top:2px">차량 3대 확보</div></div>
+    <div style="padding:12px 2px;border-bottom:1px solid #eef0f3"><b>하객 주차</b><div style="color:#6b7280;margin-top:2px">지상 · 지하 모두 이용 가능</div></div>
+    <div style="padding:12px 2px;border-bottom:1px solid #eef0f3"><b>ATM · 편의점 · 베이커리</b><div style="color:#6b7280;margin-top:2px">호텔 3층</div></div>
+    <div style="padding:12px 2px"><b>답례품 교환</b><div style="color:#6b7280;margin-top:2px">3층 베이커리 앞</div></div>
+  </section>
+
+  <div style="margin:14px 0 0;padding:12px 15px;background:#fdf1f1;border:1px solid #f6d9d9;border-radius:20px;font-size:12.5px;color:#9b5c5c;line-height:1.6">
+    <b style="color:#c0392b">주의</b> · 누군가 "대신 결제해 달라"고 하면, 들은 것 없다고 하시고 신랑·신부에게 꼭 확인해 주세요.
+  </div>
 
 </div>
 
